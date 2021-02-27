@@ -36,13 +36,6 @@ public class DescriptionController {
 		return new ResponseEntity<>(created, HttpStatus.CREATED);
 	}
 	
-	
-//	@PostMapping("/newQuiz")
-//	public ResponseEntity<DescriptionDTO> addDesc(@RequestBody QuizDescription description){
-//		return new ResponseEntity<>(this.service.addDesc(description), HttpStatus.CREATED);
-//	}
-
-	
 	@GetMapping("/getAll")
 	public ResponseEntity<List<DescriptionDTO>> getAllDesc(){
 		return ResponseEntity.ok(this.service.getAllDesc());
@@ -66,14 +59,6 @@ public class DescriptionController {
 			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 		}
 	}
-	
-	@GetMapping("/getByQuizName/{quizName}")
-	public ResponseEntity<DescriptionDTO> findByQuizName(@PathVariable String quizName){
-		DescriptionDTO found = this.service.findByName(quizName);
-		return ResponseEntity.ok(found);
-	}
-	
-	
 }
 
 
