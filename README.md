@@ -56,6 +56,7 @@ I will be using the spring framework to develop my Java backend as it simplfies 
 ## HTML, CSS and Javascript
 
 ## Git and Github
+I am using Git as a version control system for the development of my web application. I will be using Github as a repository for my project. Git allows me to keep track of updates for my app and revert any changes that cause problems.
 
 
 ## GCP Server
