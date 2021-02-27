@@ -16,7 +16,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 public class QuizQuestion {
-
 	@Id //Primary
 	@GeneratedValue(strategy = GenerationType.IDENTITY) //auto increment
 	private Long question_id;
@@ -32,6 +31,4 @@ public class QuizQuestion {
 
 	@ManyToOne
 	private QuizDescription quizDescription;
-	
-	
 }

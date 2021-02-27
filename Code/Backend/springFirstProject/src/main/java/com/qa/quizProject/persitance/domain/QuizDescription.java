@@ -23,7 +23,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 public class QuizDescription {
-
 	@Id //primary key
 	@GeneratedValue(strategy= GenerationType.IDENTITY) // auto increment
 	private Long quiz_id;
@@ -37,8 +36,4 @@ public class QuizDescription {
 	@OneToMany(mappedBy = "quizDescription", fetch = FetchType.EAGER)
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private List<QuizQuestion> questions = new ArrayList<>();
-
-	
-	
-	
 }
