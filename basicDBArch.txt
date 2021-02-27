@@ -1,10 +1,8 @@
-Quiz platform?
+Quiz platform tables
 
 quiz_desc:	quiz id - quiz description
 
 table 2:	question id - quiz id - question - answers - correctAnswer
-
-table 3:	userid - quiz id - score
 
 
 Users can create new quizzes with customised questions 
