@@ -54,21 +54,11 @@ public class DescriptionService {
 		toUpdate.setQuizName(desc.getQuizName());
 		ProjectUtils.mergeNotNull(desc, toUpdate);
 		return this.mapToDTO(toUpdate);
-		
-		
-//		QuizDescription descChange = this.repo.getOne(id);
-//		descChange.setQuizDescription(desc.getQuizDescription());
-//		descChange.setQuizName(desc.getQuizName());
-//		return this.repo.save(descChange);
 	}
 	
 	public boolean removeQuizDesc(Long id) {
 		this.repo.deleteById(id);
 		return !this.repo.existsById(id);
-	}
-	
-	public DescriptionDTO findByName(String quizName) {
-		return this.mapToDTO(this.repo.findQuizDescriptionByQuizName(quizName));
 	}
 	
 }
