@@ -1,0 +1,12 @@
+Quiz platform?
+
+quiz_desc:	quiz id - quiz description
+
+table 2:	question id - quiz id - question - answers - correctAnswer
+
+table 3:	userid - quiz id - score
+
+
+Users can create new quizzes with customised questions 
+
+Other users can see the custom quizzes and complete them to get a score
