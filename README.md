@@ -54,6 +54,7 @@ I will be creating the backend for my web application using the Java programming
 I will be using the spring framework to develop my Java backend as it simplfies the creation of projects by automating various configuration steps. This framework also handles a lot of procedures under the hood to allow for smoother development.
 
 ## HTML, CSS and Javascript
+My frontend is made using a combination of the above languages which all work in tandem to produce a sleek and responsive web application.
 
 ## Git and Github
 I am using Git as a version control system for the development of my web application. I will be using Github as a repository for my project. Git allows me to keep track of updates for my app and revert any changes that cause problems.
