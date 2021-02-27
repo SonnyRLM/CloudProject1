@@ -11,16 +11,4 @@ public class QuestionDTO {
 	private String question;
 	private String answers;
 	private String correct;
-	
-	
-//	{
-//		"question_id":
-//		"question":
-//		"answers":
-//		"correct":
-//	}
-	
-	
-	
-	
 }
