@@ -60,6 +60,6 @@ I am using Git as a version control system for the development of my web applica
 
 
 ## GCP Server
-
+Google Cloud Platform will be used to provison servers for my application. This inclues both the web server and the SQL server that my appication will require to function. GCP allow me to scale computing power when nessasary and reduce operating costs by only paying for the rescources I use.
 
 ## Acknowledgements 
