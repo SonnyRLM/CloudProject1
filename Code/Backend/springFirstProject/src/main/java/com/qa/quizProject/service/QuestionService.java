@@ -37,13 +37,10 @@ public class QuestionService {
 	
 	public List<QuestionDTO> getAllQuests(){
 		return this.repo.findAll().stream().map(this::mapToDTO).collect(Collectors.toList());
-//		List<QuizQuestion> allQuest = this.repo.findAll();
-//		return allQuest;
 	}
 	
 	public QuestionDTO getQuestById(Long id) {
 		return this.mapToDTO(this.repo.findById(id).orElseThrow());
-		//return this.repo.findById(id).get();
 	}
 	
 	public QuestionDTO updateQuestion(Long id, QuestionDTO quest) {
