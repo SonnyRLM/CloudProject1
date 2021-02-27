@@ -20,3 +20,31 @@ I plan to meet the following requirements to ensure the success of my project:
 * Code built through a CI server.
 * Deploy application through a cloud-based virtual machine.
 
+
+## My Approach
+
+
+## ERD Diagrams
+
+
+## Risk Assessment
+
+
+## Jira Board
+
+### User Stories
+
+
+## Java
+
+
+## Spring Framework
+
+
+## Git and Github
+
+
+## GCP Server
+
+
+## Acknowledgements 
