@@ -36,10 +36,13 @@ I plan to meet the following requirements to ensure the success of my project:
 
 
 ## Java
+I will be creating the backend for my web application using the Java programming language using various plugins to aid in development and maintainence. My application will adhere to the various principles and standards we were introduced to during our training sessions thus far.
 
 
 ## Spring Framework
+I will be using the spring framework to develop my Java backend as it simplfies the creation of projects by automating various configuration steps. This framework also handles a lot of procedures under the hood to allow for smoother development.
 
+## HTML, CSS and Javascript
 
 ## Git and Github
 
