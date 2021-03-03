@@ -31,4 +31,12 @@ public class QuizQuestion {
 
 	@ManyToOne
 	private QuizDescription quizDescription;
+
+	public QuizQuestion(Long question_id, String question, String answers, String correct) {
+		super();
+		this.question_id = question_id;
+		this.question = question;
+		this.answers = answers;
+		this.correct = correct;
+	}
 }
