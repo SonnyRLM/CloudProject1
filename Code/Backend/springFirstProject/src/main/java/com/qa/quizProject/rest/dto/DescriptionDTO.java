@@ -15,11 +15,8 @@ public class DescriptionDTO {
 	// data transfer object
 	// represents the structure of out data in a nice readable format 
 	
-	private long quizId;
+	private Long quiz_id;
 	private String quizDescription;
 	private String quizName;
-	private List<QuestionDTO> questions = new ArrayList<>();
-
-	
-		
+	private List<QuestionDTO> questions = new ArrayList<>();	
 }

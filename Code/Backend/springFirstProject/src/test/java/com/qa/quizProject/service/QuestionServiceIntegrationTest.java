@@ -60,7 +60,6 @@ public class QuestionServiceIntegrationTest {
 	@Test
 	void createTest() throws Exception {
 		// Problem here is that service.create(q1) appends q1 to end of db and returns new entry
-		// 
 		assertThat(this.service.create(Question1)).isEqualTo(this.mapToDTO(Question1));
 	}
 	

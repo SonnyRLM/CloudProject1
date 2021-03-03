@@ -29,7 +29,7 @@ public class DescriptionService {
 	private DescriptionDTO mapToDTO(QuizDescription desc) {
 		return this.mapper.map(desc, DescriptionDTO.class);
 	}
-	
+
 	
 	// create
 	public DescriptionDTO create(QuizDescription desc) {
@@ -43,7 +43,6 @@ public class DescriptionService {
 	
 	// read by ID
 	public DescriptionDTO getDescById(Long id) {
-		//return this.repo.getOne(id);
 		return this.mapToDTO(this.repo.findById(id).orElseThrow());
 	}
 	
