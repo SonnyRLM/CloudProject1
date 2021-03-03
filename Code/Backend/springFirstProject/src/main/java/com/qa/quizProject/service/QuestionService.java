@@ -51,7 +51,7 @@ public class QuestionService {
 		questChange.setCorrect(quest.getCorrect());
 		
 		ProjectUtils.mergeNotNull(quest, questChange);
-		return this.mapToDTO(questChange);
+		return this.mapToDTO(this.repo.save(questChange));
 	}
 	
 	public boolean removeQuizQuest(Long id) {
