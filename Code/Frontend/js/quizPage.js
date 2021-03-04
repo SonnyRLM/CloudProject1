@@ -3,7 +3,10 @@ let quizID = window.location.hash.substring(1);
 
 let carouselElement;
 
-// Get all questions from quiz 1
+// Store answers for evaluation
+let answers = [];
+
+// Get all questions from selected quiz
 fetch(`http://localhost:8901/quiz/getById/${quizID}`)
 .then( (response) => {
     if (response.status !== 200){
@@ -12,18 +15,14 @@ fetch(`http://localhost:8901/quiz/getById/${quizID}`)
     }
     response.json()
     .then( (data) => {
-        console.log(data.questions)
-
         carouselElement = document.getElementById('carouselCustom');
-        
         generateCarousel(data)
-
     })
     .catch( (error) => {console.log(error)})
 });
 
 
-
+//Generates carousel for questions to be displayed
 let generateCarousel = (data) => {
     // Container for all slides
     let carouselInner = document.createElement('div');
@@ -32,9 +31,10 @@ let generateCarousel = (data) => {
     let numQuestions = data.questions.length;
     // Slide generation
     for(let i=0;i !== numQuestions;i++) {
-    
         let carouselItem = document.createElement('div');
 
+        //Store answers for later
+        answers.push(data.questions[i].correct);
 
         if (i === 0) {carouselItem.className = 'carousel-item active height100 questionSlide'}
         else{carouselItem.className = 'carousel-item height100 questionSlide'}
@@ -46,8 +46,8 @@ let generateCarousel = (data) => {
         svg.setAttribute('height', '400px');
 
 
-        let questionText = document.createElement('text')
-        questionText.textContent = data.questions[i].question;
+        let questionText = document.createElement('p')
+        questionText.textContent = `Question ${i+1}: ${data.questions[i].question}`;
         questionText.className = 'height100 questionText';
         questionText.setAttribute('x', '50%');
         questionText.setAttribute('y', '50%');
@@ -64,9 +64,6 @@ let generateCarousel = (data) => {
         
         radioButtonGroup = createRadioButtons(radioButtonGroup, data.questions[i].answers, i);
         
-
-
-
         // Append all to DOM
         svg.appendChild(questionText);
         carouselItem.appendChild(svg);
@@ -78,15 +75,11 @@ let generateCarousel = (data) => {
 }
 
 let createRadioButtons = (tempRadioGroup, ans, qNum) => {
-    //let tempRadioGroup = document.createElement('div')
-
-    console.log(qNum);
     let ansArray = ans.split(';');
     let numAns = ansArray.length;
 
     for(let i=0; i !== numAns; i++){
-        //Make button for each ansArray[i]
-
+        //Make radio button for each ansArray[i]
         let radioInput = document.createElement('input');
         radioInput.setAttribute('type', 'radio');
         radioInput.className = 'btn-check bringFront';
@@ -108,3 +101,27 @@ let createRadioButtons = (tempRadioGroup, ans, qNum) => {
     }
     return tempRadioGroup;
 };
+
+function evalAnswers(){
+    let test = document.getElementsByTagName('input');
+    let scoreDisplay = document.getElementById('scoreContainer');
+    let selectedAns = [];
+    let score = 0;
+    
+
+    //Get entered answers from form
+    for(let i=0; i !== test.length; i++){
+        if(test[i].checked === true){
+            selectedAns.push(test[i].value);
+        }
+    }
+
+    //Calculate how many correct answers
+    for(let i=0; i !== answers.length; i++){
+        if(selectedAns[i] === answers[i]){
+            score += 1;
+    }}
+
+    //Display score on modal element
+    scoreDisplay.textContent = `Congratulations! You scored: ${score}!`
+}
