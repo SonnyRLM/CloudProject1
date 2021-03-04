@@ -62,7 +62,7 @@ let generateCarousel = (data) => {
         radioButtonGroup.className = 'btn-group';
         radioButtonGroup.setAttribute('role', 'group');
         
-        radioButtonGroup = createRadioButtons(radioButtonGroup, data.questions[i].answers);
+        radioButtonGroup = createRadioButtons(radioButtonGroup, data.questions[i].answers, i);
         
 
 
@@ -77,9 +77,10 @@ let generateCarousel = (data) => {
     };
 }
 
-let createRadioButtons = (tempRadioGroup, ans) => {
+let createRadioButtons = (tempRadioGroup, ans, qNum) => {
     //let tempRadioGroup = document.createElement('div')
 
+    console.log(qNum);
     let ansArray = ans.split(';');
     let numAns = ansArray.length;
 
@@ -88,17 +89,18 @@ let createRadioButtons = (tempRadioGroup, ans) => {
 
         let radioInput = document.createElement('input');
         radioInput.setAttribute('type', 'radio');
-        radioInput.className = 'btn-check';
-        radioInput.setAttribute('name', 'btnradio');
-        radioInput.setAttribute('autocomplete', 'off')
+        radioInput.className = 'btn-check bringFront';
+        radioInput.setAttribute('name', `btnradio${qNum+1}`);
+        radioInput.setAttribute('autocomplete', 'off');
+        radioInput.setAttribute('value', 'ansArray[i]')
 
         //Id need to be set dynamically for each answer
-        radioInput.setAttribute('name', `btnradio${i+1}`);
+        radioInput.setAttribute('id', `btnradio${((qNum+1)*4)+i}`);
 
 
         let radioLabel = document.createElement('label');
         radioLabel.className = 'btn btn-outline-primary';
-        radioLabel.setAttribute('for', `btnradio${i+1}`);
+        radioLabel.setAttribute('for', `btnradio${((qNum+1)*4)+i}`);
         radioLabel.textContent = ansArray[i];
 
         tempRadioGroup.appendChild(radioInput);
