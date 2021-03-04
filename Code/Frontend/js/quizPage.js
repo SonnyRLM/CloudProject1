@@ -92,7 +92,7 @@ let createRadioButtons = (tempRadioGroup, ans, qNum) => {
         radioInput.className = 'btn-check bringFront';
         radioInput.setAttribute('name', `btnradio${qNum+1}`);
         radioInput.setAttribute('autocomplete', 'off');
-        radioInput.setAttribute('value', 'ansArray[i]')
+        radioInput.setAttribute('value', `${ansArray[i]}`)
 
         //Id need to be set dynamically for each answer
         radioInput.setAttribute('id', `btnradio${((qNum+1)*4)+i}`);
