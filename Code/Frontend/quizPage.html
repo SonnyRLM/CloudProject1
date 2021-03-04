@@ -12,6 +12,7 @@
             integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
             crossorigin="anonymous"
           />
+          <link href="css/quizPage.css" rel="stylesheet" type="text/css">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -37,10 +38,24 @@
       </nav>
 
 
+        <div id="questionBox">
+          <div id="carouselCustom" class="carousel slide" data-bs-interval="false">
+              <!-- NAV BUTTONS -->
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselCustom" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselCustom" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+
+                 <!-- PLACE ALL CAROUSEL ELEMENTS INTO HERE -->
 
 
-
-
+                 
+              </button>
+          </div>
+          </div>
 
 
 
@@ -50,5 +65,6 @@
             integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
             crossorigin="anonymous"
           ></script>
+          <script src="js/quizPage.js"></script>
 </body>
 </html>

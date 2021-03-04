@@ -11,14 +11,11 @@ fetch('http://localhost:8901/quiz/getAll')
     }
     response.json()
     .then( (data) => {
-        // CREATE CARD FOR EACH QUIZ WITH NAME AND DESCRIPTION
+        // CREATES CARD FOR EACH QUIZ WITH NAME AND DESCRIPTION
         console.log(data)
 
-        if (cardContainer) {
-            document.getElementById('card-container').replaceWith(cardContainer);
-            return;
-        }
         cardContainer = document.getElementById('cards');
+        console.log(cardContainer);
         data.forEach( (data) => {
             generateCards(data);
         });
@@ -60,15 +57,6 @@ let generateCards = (data) => {
     cardBody.appendChild(description);
     cardBody.appendChild(btn);
     card.appendChild(cardBody);
-    cardContainer.appendChild(card);
-
-
-    
+    cardContainer.appendChild(card); 
 }
-
-// btn.onClick = () => {
-//     localStorage.setItem('quizId', data.quizId);
-//     console.log("yeet")
-//     window.location = 'quizPage.html';
-// }
 
