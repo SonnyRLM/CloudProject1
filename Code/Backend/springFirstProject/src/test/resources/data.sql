@@ -8,6 +8,6 @@ INSERT INTO `quiz_question` (`question`,`answers`,`correct`,`quiz_description_qu
 INSERT INTO `quiz_question` (`question`,`answers`,`correct`,`quiz_description_quiz_id`) VALUES ('Capital of Uruguay','Montevideo;Melo;Buenos Aires;Maldonado','Montevideo','1');
 
 --QUIZID 2
-INSERT INTO `quiz_question` (`question`,`answers`,`correct`,`quiz_description_quiz_id`) VALUES ('What continent is Austrailia in?','Europe;Oceania;Africa;Antarctica','Oceania','2');
-INSERT INTO `quiz_question` (`question`,`answers`,`correct`,`quiz_description_quiz_id`) VALUES ('What continent is Lesotho in?','Europe;Oceania;Africa;Antarctica','Africa','2');
-INSERT INTO `quiz_question` (`question`,`answers`,`correct`,`quiz_description_quiz_id`) VALUES ('What continent is Andorra in?','Europe;Oceania;Africa;Antarctica','Europe','2');
+--INSERT INTO `quiz_question` (`question`,`answers`,`correct`,`quiz_description_quiz_id`) VALUES ('What continent is Austrailia in?','Europe;Oceania;Africa;Antarctica','Oceania','2');
+--INSERT INTO `quiz_question` (`question`,`answers`,`correct`,`quiz_description_quiz_id`) VALUES ('What continent is Lesotho in?','Europe;Oceania;Africa;Antarctica','Africa','2');
+--INSERT INTO `quiz_question` (`question`,`answers`,`correct`,`quiz_description_quiz_id`) VALUES ('What continent is Andorra in?','Europe;Oceania;Africa;Antarctica','Europe','2');
