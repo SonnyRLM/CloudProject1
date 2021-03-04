@@ -1,0 +1,33 @@
+#questionBox{
+    position: absolute;
+    left: 25%;
+    width: 50%;
+    height: 300px;
+    margin: 50px;
+    text-align: center;
+}
+
+#carouselCustom {
+    height: 100%;
+}
+
+.height100 {
+    height: 100%;
+}
+
+.width100{
+    width:100%;
+}
+.questionSlide {
+    background-color: grey;
+}
+
+.questionText {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bringFront {
+    z-index: 200;
+}

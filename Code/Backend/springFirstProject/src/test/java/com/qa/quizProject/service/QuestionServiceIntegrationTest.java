@@ -40,20 +40,13 @@ public class QuestionServiceIntegrationTest {
 	private final QuizQuestion Question3 = new QuizQuestion(3L, "Capital of Cuba","Camaguey;Guantanamo;Havana;Holguin","Havana");
 	private final QuizQuestion Question4 = new QuizQuestion(4L, "Capital of Uruguay","Montevideo;Melo;Buenos Aires;Maldonado","Montevideo");
 	
-	//QUIZ 2
-	private final QuizQuestion Question5 = new QuizQuestion(5L, "What continent is Austrailia in?","Europe;Oceania;Africa;Antarctica","Oceania");
-	private final QuizQuestion Question6 = new QuizQuestion(6L, "What continent is Lesotho in?","Europe;Oceania;Africa;Antarctica","Africa");
-	private final QuizQuestion Question7 = new QuizQuestion(7L, "What continent is Andorra in?","Europe;Oceania;Africa;Antarctica","Europe");
 	
-	
-	
-	
-	
-	private final List<QuizQuestion> QUESTIONS = List.of(Question1,Question2,Question3,Question4,Question5,Question6,Question7);
+	private final List<QuizQuestion> QUESTIONS = List.of(Question1,Question2,Question3,Question4);
 	
 	
 	@BeforeEach
 	void setup() {
+		System.out.println("================================================");
 		this.repo.saveAll(QUESTIONS);
 	}
 	
@@ -82,7 +75,7 @@ public class QuestionServiceIntegrationTest {
 	
 	@Test
 	void removeTest() throws Exception {
-		assertThat(this.service.removeQuizQuest(Question1.getQuestion_id())).isTrue();
+		assertThat(this.service.removeQuizQuest(Question2.getQuestion_id())).isTrue();
 	}
 	
 }
