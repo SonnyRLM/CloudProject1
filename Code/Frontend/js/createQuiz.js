@@ -21,6 +21,7 @@ let addQuestElement = () => {
 
         let ansInput = document.createElement('input');
         ansInput.setAttribute('type', 'text');
+        ansInput.setAttribute('id',  `radio${((numberOfQuestions+1)*4)+i}`)
         ansInput.className = 'form-control';
         ansInput.placeholder = 'Answer';
 
@@ -30,6 +31,7 @@ let addQuestElement = () => {
         radInput.className = 'btn-check';
         radInput.setAttribute('name', `btnradio${numberOfQuestions+1}`);
         radInput.setAttribute('id',  `btnradio${((numberOfQuestions+1)*4)+i}`)
+        radInput.checked = true;
 
         let radLabel = document.createElement('label');
         radLabel.className = 'btn btn-outline-primary'
@@ -39,10 +41,7 @@ let addQuestElement = () => {
         textRadioParent.appendChild(ansInput);
         textRadioParent.appendChild(radInput);
         textRadioParent.appendChild(radLabel);
-        console.log(textRadioParent);
     }
-
-    console.log(textRadioParent);
     questionContainer.appendChild(questionInput);
     questionContainer.appendChild(textRadioParent);
 
@@ -53,9 +52,104 @@ let addQuestElement = () => {
 }
 
 
-let saveQuestions = () => {
+let saveQuestions = (quiz_id) => {
 
+    let numAns = (4 * (numberOfQuestions-1));
 
+    //Make sure there is at least 1 question
+    if (numAns === 0){
+        return;
+    }
+    
+    for(let i=8; i!==(8+numAns); i=i+4){
+
+        let answers = [];
+        let correct;
+        let questions;
+        for(let j=0; j!==4;j++){
+            let textId = `radio${i+j}`
+            let radioId = `btnradio${i+j}`
+        
+            answers.push(document.getElementById(textId).value);
+            
+            if(document.getElementById(radioId).checked === true){
+                correct = document.getElementById(textId).value;
+            }
+
+            questions = document.getElementById(textId).parentElement.parentElement.firstChild.value;
+        }
+        answers = answers.join(";");
+
+        objectToPost = JSON.stringify({
+            "answers": answers,
+            "correct": correct,
+            "question": questions,
+            "quizDescription": {
+                "quiz_id": quiz_id
+            }
+        });
+
+        console.log(objectToPost)
+
+        //Call JSON post function here (NOT MADE YET)
+
+        fetch(`http://localhost:8901/question/create`,{
+            method: `POST`,
+            headers: {"Content-Type": "application/json"},
+            body: objectToPost
+        })
+        .then( (response) => {
+            if (response.status !== 201){
+                console.log(`Status ${response.status}`);
+                return;
+            } else {
+                console.log(`All good ${response.status}`)
+            }
+            response.json()
+            .then( (data) => {
+                console.log(`Request Successful with JSON response ${data}`)
+        })
+        .catch( (error) => console.log(error))
+        });
+};
+}
+    
+
+let saveQuiz = () => {
+
+    let quizName = document.getElementById('quizName').value;
+    let quizDesc = document.getElementById('quizDesc').value;
+
+    objectToPost = JSON.stringify({
+        "quizDescription": quizDesc,
+        "quizName": quizName
+    })
+
+    //Post new quiz to database
+    fetch(`http://localhost:8901/quiz/create`,{
+        method: `POST`,
+        headers: {"Content-Type": "application/json"},
+        body: objectToPost
+    })
+    .then( (response) => {
+        if (response.status !== 201){
+            console.log(`Status ${response.status}`);
+            return;
+        } else {
+            console.log(`All good ${response.status}`)
+        }
+    response.json()
+    .then( (data) => {
+        console.log(`Request Successful with JSON response ${data}`)
+        
+        //Save questions to new quiz id
+        saveQuestions(data.quiz_id)
+
+    })
+    .catch( (error) => console.log(error))
+    });
 
     
 }
+
+

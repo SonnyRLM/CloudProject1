@@ -103,16 +103,16 @@ let createRadioButtons = (tempRadioGroup, ans, qNum) => {
 };
 
 function evalAnswers(){
-    let test = document.getElementsByTagName('input');
+    let allInputs = document.getElementsByTagName('input');
     let scoreDisplay = document.getElementById('scoreContainer');
     let selectedAns = [];
     let score = 0;
     
 
     //Get entered answers from form
-    for(let i=0; i !== test.length; i++){
-        if(test[i].checked === true){
-            selectedAns.push(test[i].value);
+    for(let i=0; i !== allInputs.length; i++){
+        if(allInputs[i].checked === true){
+            selectedAns.push(allInputs[i].value);
         }
     }
 

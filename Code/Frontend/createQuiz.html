@@ -41,15 +41,15 @@
 
     <div id="formWrapper">
       <div id="nameDescription">
-        <input type="text" class="form-control textBox" placeholder="Quiz Name">
-        <input type="text" class="form-control textBox" placeholder="Quiz Description">
+        <input type="text" id="quizName" class="form-control textBox" placeholder="Quiz Name">
+        <input type="text" id="quizDesc" class="form-control textBox" placeholder="Quiz Description">
       </div>
 
       <div id="questionWrapper">
       </div>
     
     <button type="button" class="btn btn-primary btn-lg width100" onclick="addQuestElement()">Add Question</button>
-    <button type="button" class="btn btn-primary btn-lg btnSave" onclick="">Save Quiz</button>
+    <button type="button" class="btn btn-primary btn-lg btnSave" onclick="saveQuiz()">Save Quiz</button>
     <button type="button" class="btn btn-primary btn-lg btnClose" onclick="">Discard Quiz</button>
     </div>
       
