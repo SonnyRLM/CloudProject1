@@ -41,7 +41,25 @@
       <div class="row row-cols-1 row-cols-md-2 g-4" id="cards" style="margin:20px"></div>
 
 
-
+          <!-- Modal to display score -->
+          <div class="modal fade" id="exampleModal" tabindex="-1">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="scoreContainer">
+                  Are you sure you want to delete this quiz?
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal">No</button>
+                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="deleteQuiz()">Yes, delete it</button>
+                </div>
+              </div>
+            </div>
+          </div>
+      
         <!-- JavaScript Bundle with Popper -->
         <script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"

@@ -1,6 +1,7 @@
 'use strict'
 
 let cardContainer;
+let deleteTarget;
 
 // Get all quiz names/descriptions
 fetch('http://localhost:8901/quiz/getAll')
@@ -29,7 +30,6 @@ let generateCards = (data) => {
     let card = document.createElement('div');
 
     card.className = 'card';
-    //card.style["width", "margin", "border-color", "border-width"] = ['18rem', '20px', 'grey', '2px']
     card.setAttribute('style', 'width:18rem; margin: 20px; border-color: grey; border-width: 2px;')
     
     let cardBody = document.createElement('div');
@@ -52,11 +52,36 @@ let generateCards = (data) => {
     btn.innerText = 'Take this quiz';
     btn.href = 'quizPage.html' + '#' + data.quiz_id;
 
+    let del = document.createElement('button')
+    del.className = 'btn btn-danger';
+    del.textContent = 'DELETE'
+    del.setAttribute('style', 'float:right')
+    del.setAttribute('data-bs-toggle', 'modal')
+    del.setAttribute('data-bs-target', '#exampleModal')
+    del.setAttribute('onclick', `setDeleteTarget(${data.quiz_id})`)
+
     cardBody.appendChild(img);
     cardBody.appendChild(title);
     cardBody.appendChild(description);
     cardBody.appendChild(btn);
+    cardBody.appendChild(del)
     card.appendChild(cardBody);
     cardContainer.appendChild(card); 
+}
+
+let setDeleteTarget = (id) => {
+    deleteTarget = id;
+}
+
+let deleteQuiz = () => {
+    console.log("DELETING QUIZ")
+
+
+    fetch(`http://localhost:8901/quiz/delete/${deleteTarget}`, {
+        method: `DELETE`
+    })
+    .then( (data) => console.log(`Request all good with JSON response ${data}`))
+    .catch( (error) => console.log(error));
+
 }
 
