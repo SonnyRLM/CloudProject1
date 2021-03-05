@@ -12,11 +12,9 @@ fetch('http://localhost:8901/quiz/getAll')
     }
     response.json()
     .then( (data) => {
-        // CREATES CARD FOR EACH QUIZ WITH NAME AND DESCRIPTION
-        console.log(data)
-
+        //Find container DOM object
         cardContainer = document.getElementById('cards');
-        console.log(cardContainer);
+        //Generate card for each quiz
         data.forEach( (data) => {
             generateCards(data);
         });
@@ -25,7 +23,7 @@ fetch('http://localhost:8901/quiz/getAll')
 });
 
 
-
+//Generates cards dynamically for each quiz in database
 let generateCards = (data) => {
     let card = document.createElement('div');
 
@@ -69,14 +67,14 @@ let generateCards = (data) => {
     cardContainer.appendChild(card); 
 }
 
+//Set deleteTarget when 'delete' button is pressed
 let setDeleteTarget = (id) => {
     deleteTarget = id;
 }
 
 let deleteQuiz = () => {
-    console.log("DELETING QUIZ")
 
-
+    //HTTP request to delete quiz at given id
     fetch(`http://localhost:8901/quiz/delete/${deleteTarget}`, {
         method: `DELETE`
     })
