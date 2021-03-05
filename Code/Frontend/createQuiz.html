@@ -11,6 +11,7 @@
         integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
         crossorigin="anonymous"
       />
+      <link rel="stylesheet" href="css/createQuiz.css" type="text/css">
     <title>Create Quiz</title>
 </head>
 <body>
@@ -38,7 +39,20 @@
       </nav>
 
 
+    <div id="formWrapper">
+      <div id="nameDescription">
+        <input type="text" class="form-control textBox" placeholder="Quiz Name">
+        <input type="text" class="form-control textBox" placeholder="Quiz Description">
+      </div>
 
+      <div id="questionWrapper">
+      </div>
+    
+    <button type="button" class="btn btn-primary btn-lg width100" onclick="addQuestElement()">Add Question</button>
+    <button type="button" class="btn btn-primary btn-lg btnSave" onclick="">Save Quiz</button>
+    <button type="button" class="btn btn-primary btn-lg btnClose" onclick="">Discard Quiz</button>
+    </div>
+      
 
 
 
@@ -50,5 +64,6 @@
       integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
       crossorigin="anonymous"
     ></script>
+    <script src="js/createQuiz.js"></script>
 </body>
 </html>
