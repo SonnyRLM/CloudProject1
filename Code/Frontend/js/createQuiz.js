@@ -4,6 +4,7 @@ let questionParent = document.getElementById('questionWrapper')
 
 let numberOfQuestions = 1;
 
+//Create element to input each question
 let addQuestElement = () => {
     let questionContainer = document.createElement('div');
     let textRadioParent = document.createElement('div');
@@ -54,6 +55,7 @@ let addQuestElement = () => {
 
 let saveQuestions = (quiz_id) => {
 
+    //Number of answers to loop over
     let numAns = (4 * (numberOfQuestions-1));
 
     //Make sure there is at least 1 question
@@ -61,25 +63,32 @@ let saveQuestions = (quiz_id) => {
         return;
     }
     
+    //Loop over each inputted question
     for(let i=8; i!==(8+numAns); i=i+4){
-
         let answers = [];
         let correct;
         let questions;
+
+        //Loop over each answer in a question
         for(let j=0; j!==4;j++){
             let textId = `radio${i+j}`
             let radioId = `btnradio${i+j}`
-        
+            
+            //Add all answers to array
             answers.push(document.getElementById(textId).value);
             
+            //Place 'correct' answer in seperate variable
             if(document.getElementById(radioId).checked === true){
                 correct = document.getElementById(textId).value;
             }
 
+            //Get inputted question
             questions = document.getElementById(textId).parentElement.parentElement.firstChild.value;
         }
+        //Format inputted answers for database
         answers = answers.join(";");
 
+        //Create object to post
         objectToPost = JSON.stringify({
             "answers": answers,
             "correct": correct,
@@ -89,10 +98,7 @@ let saveQuestions = (quiz_id) => {
             }
         });
 
-        console.log(objectToPost)
-
-        //Call JSON post function here (NOT MADE YET)
-
+        //Post JSON to sql server
         fetch(`http://localhost:8901/question/create`,{
             method: `POST`,
             headers: {"Content-Type": "application/json"},
@@ -117,15 +123,23 @@ let saveQuestions = (quiz_id) => {
 
 let saveQuiz = () => {
 
+    //Get inputted values
     let quizName = document.getElementById('quizName').value;
     let quizDesc = document.getElementById('quizDesc').value;
 
+    //Make sure there is at least 1 question
+    let numAns = (4 * (numberOfQuestions-1));
+    if (numAns === 0){
+        return;
+    }
+
+    //Create object to post
     objectToPost = JSON.stringify({
         "quizDescription": quizDesc,
         "quizName": quizName
     })
 
-    //Post new quiz to database
+    //Post JSON to sql server
     fetch(`http://localhost:8901/quiz/create`,{
         method: `POST`,
         headers: {"Content-Type": "application/json"},
@@ -148,8 +162,6 @@ let saveQuiz = () => {
     })
     .catch( (error) => console.log(error))
     });
-
-    
 }
 
 
