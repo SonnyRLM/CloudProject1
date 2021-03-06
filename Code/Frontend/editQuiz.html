@@ -4,18 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- CSS only -->
-        <link
+    <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
         rel="stylesheet"
         integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
         crossorigin="anonymous"
       />
       <link rel="stylesheet" href="css/createQuiz.css" type="text/css">
-    <title>Create Quiz</title>
+    <title>Edit Quiz</title>
 </head>
 <body>
-    <!-- NAV BAR -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
           <a class="navbar-brand" href="index.html">QuizApp</a>
@@ -31,40 +29,37 @@
                 <a class="nav-link" href="takeQuiz.html">Quizzes</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" href="createQuiz.html">Create Quiz</a>
+                <a class="nav-link" href="createQuiz.html">Create Quiz</a>
               </li>
             </ul>
           </div>
         </div>
       </nav>
 
-
-    <div id="formWrapper">
-      <div id="nameDescription">
-        <input type="text" id="quizName" class="form-control textBox" placeholder="Quiz Name">
-        <input type="text" id="quizDesc" class="form-control textBox" placeholder="Quiz Description">
-      </div>
-
-      <div id="questionWrapper">
-      </div>
-    
-    <button type="button" class="btn btn-primary btn-lg width100" onclick="addQuestElement()">Add Question</button>
-    <button type="button" class="btn btn-primary btn-lg width100" onclick="delQuestElement()">Remove Last Question</button>
-    <button type="button" class="btn btn-primary btn-lg btnSave" onclick="saveQuiz()">Save Quiz</button>
-    <button type="button" class="btn btn-primary btn-lg btnClose" onclick="leavePage()">Discard Quiz</button>
-    </div>
+      <div id="formWrapper">
+        <div id="nameDescription">
+          <input type="text" id="quizName" class="form-control textBox" placeholder="Quiz Name">
+          <input type="text" id="quizDesc" class="form-control textBox" placeholder="Quiz Description">
+        </div>
+  
+        <div id="questionWrapper">
+        </div>
       
+      <button type="button" class="btn btn-primary btn-lg width100" onclick="addQuestElement()">Add New Question</button>
+      <button type="button" class="btn btn-primary btn-lg width100" onclick="delQuestElement()">Remove Last Question</button>
+      <button type="button" class="btn btn-primary btn-lg btnSave" onclick="updateQuiz()">Save Quiz</button>
+      <button type="button" class="btn btn-primary btn-lg btnClose" onclick="leavePage()">Discard Changes</button>
+      </div>
 
 
 
 
-
-    <!-- JavaScript Bundle with Popper -->
     <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
-      crossorigin="anonymous"
-    ></script>
-    <script src="js/createQuiz.js"></script>
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+    crossorigin="anonymous"
+  ></script>
+  <script src="js/createQuiz.js"></script>
+  <script src="js/editQuiz.js"></script>
 </body>
 </html>

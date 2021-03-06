@@ -1,6 +1,7 @@
 'use strict'
 
 let cardContainer;
+let quizTarget;
 
 // Get all quiz names/descriptions
 fetch('http://localhost:8901/quiz/getAll')
@@ -11,11 +12,9 @@ fetch('http://localhost:8901/quiz/getAll')
     }
     response.json()
     .then( (data) => {
-        // CREATES CARD FOR EACH QUIZ WITH NAME AND DESCRIPTION
-        console.log(data)
-
+        //Find container DOM object
         cardContainer = document.getElementById('cards');
-        console.log(cardContainer);
+        //Generate card for each quiz
         data.forEach( (data) => {
             generateCards(data);
         });
@@ -24,12 +23,11 @@ fetch('http://localhost:8901/quiz/getAll')
 });
 
 
-
+//Generates cards dynamically for each quiz in database
 let generateCards = (data) => {
     let card = document.createElement('div');
 
     card.className = 'card';
-    //card.style["width", "margin", "border-color", "border-width"] = ['18rem', '20px', 'grey', '2px']
     card.setAttribute('style', 'width:18rem; margin: 20px; border-color: grey; border-width: 2px;')
     
     let cardBody = document.createElement('div');
@@ -52,11 +50,40 @@ let generateCards = (data) => {
     btn.innerText = 'Take this quiz';
     btn.href = 'quizPage.html' + '#' + data.quiz_id;
 
+    let del = document.createElement('button')
+    del.className = 'btn btn-danger';
+    del.textContent = 'Edit/Delete'
+    del.setAttribute('style', 'float:right; width:100px; height:38px; font-size:15px')
+    del.setAttribute('data-bs-toggle', 'modal')
+    del.setAttribute('data-bs-target', '#exampleModal')
+    del.setAttribute('onclick', `setQuizTarget(${data.quiz_id})`)
+
     cardBody.appendChild(img);
     cardBody.appendChild(title);
     cardBody.appendChild(description);
     cardBody.appendChild(btn);
+    cardBody.appendChild(del)
     card.appendChild(cardBody);
     cardContainer.appendChild(card); 
 }
 
+//Set quizTarget when 'edit/delete' button is pressed
+let setQuizTarget = (id) => {
+    quizTarget = id;
+}
+
+let deleteQuiz = () => {
+
+    //HTTP request to delete quiz at given id
+    fetch(`http://localhost:8901/quiz/delete/${quizTarget}`, {
+        method: `DELETE`
+    })
+    .then( (data) => console.log(`Request all good with JSON response ${data}`))
+    .catch( (error) => console.log(error));
+
+}
+
+let editQuiz = () => {
+    console.log('go edit this quiz: ' + quizTarget)
+    window.location.href = 'editQuiz.html'+ '#' + quizTarget;
+}

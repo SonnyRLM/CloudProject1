@@ -46,13 +46,19 @@ public class DescriptionService {
 		return this.mapToDTO(this.repo.findById(id).orElseThrow());
 	}
 	
-	
+	// update by ID
 	public DescriptionDTO updateQuizDesc(Long id, DescriptionDTO desc) {
-		QuizDescription toUpdate = this.repo.findById(id).orElseThrow();
-		toUpdate.setQuizDescription(desc.getQuizDescription());
-		toUpdate.setQuizName(desc.getQuizName());
-		ProjectUtils.mergeNotNull(desc, toUpdate);
-		return this.mapToDTO(toUpdate);
+		//Grab old quiz from db
+		QuizDescription oldQuiz = this.repo.findById(id).orElseThrow();
+		
+		//Update values with new values
+		oldQuiz.setQuizDescription(desc.getQuizDescription());
+		oldQuiz.setQuizName(desc.getQuizName());
+		
+		ProjectUtils.mergeNotNull(desc, oldQuiz);
+		
+		return this.mapToDTO(this.repo.save(oldQuiz));
+		
 	}
 	
 	public boolean removeQuizDesc(Long id) {

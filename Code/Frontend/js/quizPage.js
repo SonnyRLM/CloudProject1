@@ -6,6 +6,8 @@ let carouselElement;
 // Store answers for evaluation
 let answers = [];
 
+let numQuestions;
+
 // Get all questions from selected quiz
 fetch(`http://localhost:8901/quiz/getById/${quizID}`)
 .then( (response) => {
@@ -28,7 +30,7 @@ let generateCarousel = (data) => {
     let carouselInner = document.createElement('div');
     carouselInner.className = 'carousel-inner height100';
 
-    let numQuestions = data.questions.length;
+    numQuestions = data.questions.length;
     // Slide generation
     for(let i=0;i !== numQuestions;i++) {
         let carouselItem = document.createElement('div');
@@ -123,5 +125,5 @@ function evalAnswers(){
     }}
 
     //Display score on modal element
-    scoreDisplay.textContent = `Congratulations! You scored: ${score}!`
+    scoreDisplay.textContent = `Congratulations! You scored: ${score}/${numQuestions}!`
 }
