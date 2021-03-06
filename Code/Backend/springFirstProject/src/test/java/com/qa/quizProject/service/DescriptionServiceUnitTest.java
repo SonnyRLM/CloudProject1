@@ -42,8 +42,6 @@ public class DescriptionServiceUnitTest {
 	
 		private final List<QuizDescription> QUIZZES = List.of(Quiz1,Quiz2,Quiz3);
 		
-		
-		
 		@Test
 		void createTest() throws Exception{
 			when(this.repo.save(Quiz1)).thenReturn(Quiz1);
