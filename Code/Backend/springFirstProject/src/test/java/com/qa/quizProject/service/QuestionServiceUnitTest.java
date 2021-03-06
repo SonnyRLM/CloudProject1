@@ -82,9 +82,5 @@ public class QuestionServiceUnitTest {
 			when(this.repo.existsById(Question1.getQuestion_id())).thenReturn(found);
 			assertThat(this.service.removeQuizQuest(Question1.getQuestion_id())).isNotEqualTo(found);
 			verify(this.repo, atLeastOnce()).existsById(Question1.getQuestion_id());
-			
 		}
-		
-		
-		
 }
