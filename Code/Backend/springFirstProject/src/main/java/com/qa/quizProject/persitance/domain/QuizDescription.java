@@ -36,4 +36,11 @@ public class QuizDescription {
 	@OneToMany(mappedBy = "quizDescription", fetch = FetchType.EAGER)
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private List<QuizQuestion> questions = new ArrayList<>();
+
+	public QuizDescription(Long quiz_id, String quizName, String quizDescription) {
+		super();
+		this.quiz_id = quiz_id;
+		this.quizDescription = quizDescription;
+		this.quizName = quizName;
+	}
 }

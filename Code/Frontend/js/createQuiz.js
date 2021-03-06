@@ -1,4 +1,3 @@
-
 //Parent Element for questionInput's
 let questionParent = document.getElementById('questionWrapper')
 
@@ -141,7 +140,7 @@ let saveQuiz = () => {
     }
 
     //Create object to post
-    objectToPost = JSON.stringify({
+    let objectToPost = JSON.stringify({
         "quizDescription": quizDesc,
         "quizName": quizName
     })

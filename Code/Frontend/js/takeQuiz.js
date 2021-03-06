@@ -1,10 +1,9 @@
 'use strict'
-
 let cardContainer;
 let quizTarget;
 
 // Get all quiz names/descriptions
-fetch('http://localhost:8901/quiz/getAll')
+fetch(`http://localhost:8901/quiz/getAll`)
 .then( (response) => {
     if (response.status !== 200){
         console.log(`status ${response.status}`);

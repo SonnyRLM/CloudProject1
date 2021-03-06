@@ -1,5 +1,6 @@
 INSERT INTO `quiz_description` (`quiz_name`, `quiz_description`) VALUES ('Capital Cities', 'Select the Capital city of these counties');
 INSERT INTO `quiz_description` (`quiz_name`, `quiz_description`) VALUES ('Continents', 'Select the continent that these countries are in');
+INSERT INTO `quiz_description` (`quiz_name`, `quiz_description`) VALUES ('General Knowledge','Test your brain with this variety quiz');
 
 --QUIZID 1
 INSERT INTO `quiz_question` (`question`,`answers`,`correct`,`quiz_description_quiz_id`) VALUES ('Capital of England','London;Bristol;Manchester;Hull','London','1');

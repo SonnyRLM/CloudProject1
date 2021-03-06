@@ -46,7 +46,6 @@ public class QuestionServiceIntegrationTest {
 	
 	@BeforeEach
 	void setup() {
-		System.out.println("================================================");
 		this.repo.saveAll(QUESTIONS);
 	}
 	
