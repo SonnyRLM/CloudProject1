@@ -52,6 +52,13 @@ let addQuestElement = () => {
     numberOfQuestions++;
 }
 
+//Remove bottom question
+let delQuestElement = () => {
+    let parentElement = document.getElementById('questionWrapper');
+    parentElement.removeChild(parentElement.lastChild);
+    numberOfQuestions--;
+}
+
 
 let saveQuestions = (quiz_id) => {
 
@@ -162,6 +169,13 @@ let saveQuiz = () => {
     })
     .catch( (error) => console.log(error))
     });
+
+    //Return to quiz page after adding quiz - THIS IS BROKEN FIX
+    //leavePage();
+}
+
+let leavePage = () => {
+    window.location.href = 'takeQuiz.html'
 }
 
 
