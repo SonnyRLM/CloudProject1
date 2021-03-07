@@ -96,6 +96,8 @@ I used the below testing methodologies to achieve **81.9%** test coverage.
 <img align="right" src="Images/testCoverage.png">
 These tests can be replicated by loading my source code into Eclipse IDE, right-clicking on the 'quizProject' root file, selecting the 'Coverage As' drop down menu and then 'JUnit test'.
 
+I carried out testing on all of the components that handle requests between the frontend(Controller), all the way through to the components that deal with the SQL server(Domain/Repository).
+
 ### Unit Testing - JUnit
 I used JUnit to carry out unit testing on both service and controller layers of my application backend to ensure that all of my modules were working as intended and would not cause any major issues with the web application. A variety of annotations are used within JUnit to specify how each test is to be carried out and they pre-conditions that must be met before each test.
 
