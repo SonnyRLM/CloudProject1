@@ -183,8 +183,17 @@ let updateQuestions = () => {
         let objectToPost =  JSON.stringify({
             "question": questions,
             "answers": answers,
-            "correct": correct
+            "correct": correct,
+            "quizDescription":{
+                "quiz_id": quizID
+            }
         });
+
+        if(!questionId){
+            console.log("New Question Detected")
+            saveNewQuestion(questions, answers, correct)
+            return;
+        }
         
         fetch(`http://localhost:8901/question/update/${questionId}`,{
             method: `PUT`,
@@ -205,4 +214,61 @@ let updateQuestions = () => {
         .catch( (error) => console.log(error))
         });
         }
+
+
+        //After saving anything left in questionIDArray needs to be deleted#
+        if(questionIDArray){
+            console.log("I need to delete: " + questionIDArray);
+
+            deleteQuestions(questionIDArray);
+
+        }
+    }
+
+
+    let saveNewQuestion = (questions, answers, correct) => {
+
+        let objectToPost =  JSON.stringify({
+            "question": questions,
+            "answers": answers,
+            "correct": correct,
+            "quizDescription":{
+                "quiz_id": quizID
+            }
+        });
+
+
+        //Post JSON to sql server
+        fetch(`http://localhost:8901/question/create`,{
+            method: `POST`,
+            headers: {"Content-Type": "application/json"},
+            body: objectToPost
+        })
+        .then( (response) => {
+            if (response.status !== 201){
+                console.log(`Status ${response.status}`);
+                return;
+            } else {
+                console.log(`All good ${response.status}`)
+            }
+            response.json()
+            .then( (data) => {
+                console.log(`Request Successful with JSON response ${data}`)
+        })
+        .catch( (error) => console.log(error))
+        });
+    }
+
+
+    let deleteQuestions = (questionIDArray) => {
+        for(let i=0; i !== questionIDArray.length; i++){
+            //HTTP request to delete quiz at given id
+                    fetch(`http://localhost:8901/question/delete/${questionIDArray[i]}`, {
+                        method: `DELETE`
+                    })
+                    .then( (data) => console.log(`Request all good with JSON response ${data}`))
+                    .catch( (error) => console.log(error));
+        }
+        
+    
     }
