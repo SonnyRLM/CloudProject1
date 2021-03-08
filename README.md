@@ -107,7 +107,7 @@ Mockito essentially allows me to start up a 'mock' database to access with my co
 
 ## UML Diagram
 Below is the UML diagram of my final backend application:
-![UML](Images/UML.png)
+![UML](Images/UML2.png)
 
 
 ## Acknowledgements
