@@ -169,8 +169,10 @@ let saveQuiz = () => {
     .catch( (error) => console.log(error))
     });
 
-    //Return to quiz page after adding quiz - THIS IS BROKEN FIX
-    //leavePage();
+    //Return to quiz list after 500ms
+    setTimeout(function() { 
+        window.location.href = 'takeQuiz.html'
+    }, (500));
 }
 
 let leavePage = () => {
