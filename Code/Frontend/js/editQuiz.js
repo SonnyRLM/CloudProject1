@@ -12,7 +12,6 @@ fetch(`http://localhost:8901/quiz/getById/${quizID}`)
     }
     response.json()
     .then( (data) => {
-        console.log(data)
         populateForm(data)
     })
     .catch( (error) => {console.log(error)})
@@ -135,6 +134,11 @@ let updateQuiz = () => {
     });
     
     updateQuestions();
+
+    //Return to quiz list after 500ms
+    setTimeout(function() { 
+        window.location.href = 'takeQuiz.html'
+    }, (500));
 }
 
 //Updates questions in selected quiz
@@ -192,7 +196,7 @@ let updateQuestions = () => {
         if(!questionId){
             console.log("New Question Detected")
             saveNewQuestion(questions, answers, correct)
-            return;
+            continue;
         }
         
         fetch(`http://localhost:8901/question/update/${questionId}`,{
@@ -215,13 +219,9 @@ let updateQuestions = () => {
         });
         }
 
-
         //After saving anything left in questionIDArray needs to be deleted#
         if(questionIDArray){
-            console.log("I need to delete: " + questionIDArray);
-
             deleteQuestions(questionIDArray);
-
         }
     }
 
@@ -266,9 +266,15 @@ let updateQuestions = () => {
                     fetch(`http://localhost:8901/question/delete/${questionIDArray[i]}`, {
                         method: `DELETE`
                     })
-                    .then( (data) => console.log(`Request all good with JSON response ${data}`))
+                    .then( (response) => {
+                        if (response.status !== 204){
+                            console.log(`Status ${response.status}`);
+                            return;
+                        } else {
+                            console.log(`Question Deleted: ${response.status}`)
+                        }
+                    })
                     .catch( (error) => console.log(error));
         }
-        
-    
     }
+

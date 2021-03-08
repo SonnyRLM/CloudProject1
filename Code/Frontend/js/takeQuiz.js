@@ -80,6 +80,10 @@ let deleteQuiz = () => {
     .then( (data) => console.log(`Request all good with JSON response ${data}`))
     .catch( (error) => console.log(error));
 
+    //Return to quiz list after 500ms
+    setTimeout(function() { 
+        window.location.href = 'takeQuiz.html'
+    }, (500));
 }
 
 let editQuiz = () => {
